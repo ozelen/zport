@@ -39,7 +39,10 @@ end
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'capistrano-db-tasks'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-db-tasks'
+end
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
