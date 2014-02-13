@@ -44,5 +44,7 @@ group :development do
   gem 'capistrano-db-tasks'
 end
 
+gem 'bootstrap-sass', '~> 3.1.0'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
