@@ -40,7 +40,7 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.15'
   gem 'capistrano-db-tasks'
 end
 
