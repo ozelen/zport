@@ -45,6 +45,11 @@ group :development do
 end
 
 gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-datepicker-rails'
+gem 'simple_form'
+
+gem "paperclip"
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

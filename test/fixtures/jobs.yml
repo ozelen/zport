@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  since: 2014-04-07
+  till: 2014-04-07
+  company_id: 
+  person_id: 
+
+two:
+  title: MyString
+  description: MyText
+  since: 2014-04-07
+  till: 2014-04-07
+  company_id: 
+  person_id: 

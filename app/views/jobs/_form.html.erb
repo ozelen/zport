@@ -1,0 +1,17 @@
+<%= simple_form_for(@job) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :since, as: :string, input_html: { class: 'datepicker' } %>
+    <%= f.input :till, as: :string, input_html: { class: 'datepicker' } %>
+    <%= f.input :type_id, collection: Job.types_hash %>
+    <%= f.association :company %>
+    <%= f.association :person %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'col-lg-offset-2' %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for(@person) do |f| %>
+    <%= f.input :nickname %>
+    <%= f.input :slug %>
+    <%= f.input :email %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.button :submit, class: 'col-lg-offset-2 btn-default' %>
+<% end %>

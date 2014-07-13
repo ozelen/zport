@@ -1,5 +1,25 @@
 Zport::Application.routes.draw do
+  resources :images
+
+  resources :assignments
+
+  resources :jobs
+
+  resources :people
+
+  resources :companies
+
+  resources :projects
+
   resources :pages
+
+  get 'skills' => 'pages#skills'
+
+  get 'employment' => 'pages#employment'
+
+  get 'jobs/types/:type_name' => 'jobs#index', as: :jobs_type
+
+
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

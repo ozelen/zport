@@ -1,0 +1,8 @@
+<%= simple_form_for(@project) do |f| %>
+    <%= f.input :name %>
+    <%= f.association :customer %>
+    <%= f.association :provider %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :team %>
+    <%= f.button :submit, class: 'col-lg-offset-2 btn-default' %>
+<% end %>

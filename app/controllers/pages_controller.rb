@@ -4,6 +4,22 @@ class PagesController < ApplicationController
   def home
   end
 
+  def skills
+  end
+
+  def experience
+  end
+
+  def employment
+    @jobs = Job.all
+  end
+
+  def education
+  end
+
+  def contacts
+  end
+
   # GET /pages
   # GET /pages.json
   def index
