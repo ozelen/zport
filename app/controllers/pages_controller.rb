@@ -11,13 +11,19 @@ class PagesController < ApplicationController
   end
 
   def employment
-    @jobs = Job.all
+    @jobs = Job.by_type 'job'
   end
 
   def education
+    @jobs = Job.by_type 'education'
+  end
+
+  def portfolio
+    @projects = Project.all
   end
 
   def contacts
+    @person = Person.first
   end
 
   # GET /pages

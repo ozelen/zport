@@ -1,34 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<% content_for :header do %>
+    <%= @job.title %> at <%= @job.company %>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
+<% content_for :sidebar do %>
+    <p>
+      <strong>Employer:</strong><br/>
+      <%= @job.company %>
+    </p>
+
+    <p>
+      <strong>Period:</strong><br/>
+      <%= @job.since %> &mdash; <%= @job.till %>
+    </p>
+
+    <p>
+      <strong>Position:</strong><br/>
+      <%= @job.title %>
+    </p>
+
+    <p>
+      <strong>Projects:</strong>
+      <%= @job.company.projects.count if @job.company.projects %>
+    </p>
+<% end %>
+
+
+
+<div class="content">
   <%= @job.description %>
-</p>
+</div>
 
-<p>
-  <strong>Since:</strong>
-  <%= @job.since %>
-</p>
-
-<p>
-  <strong>Till:</strong>
-  <%= @job.till %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @job.company %>
-</p>
-
-<p>
-  <strong>Person:</strong>
-  <%= @job.person %>
-</p>
+<% if @job.company.projects %>
+    <h3>Projects:</h3>
+    <%= render @job.company.projects %>
+<% end %>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

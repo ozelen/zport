@@ -25,28 +25,46 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Skills',       '/skills' %></li>
-        <li><%= link_to 'Experience',  '/experience' %></li>
-        <li><%= link_to 'Employment', '/employment' %></li>
-        <li><%= link_to 'Education', '/education' %></li>
-        <li><%= link_to 'Contacts', '/contacts' %></li>
-      </ul>
 
-      <%= render 'layouts/admin_menu' %>
-
-    </div><!-- /.navbar-collapse -->
+    <%= render 'layouts/main_menu', elements: [
+            ['Portfolio',   portfolio_path  ],
+            ['Employment',  employment_path ],
+            ['Education',   education_path  ],
+            ['Contacts',    contacts_path   ]
+        ]
+    %>
   </div><!-- /.container-fluid -->
 </header>
 
 
 <div class="container">
 
-  <div class="content">
-    <%= yield %>
-  </div>
+
+  <% if content_for? :header %>
+      <header>
+        <h1><%= yield(:header) %></h1>
+      </header>
+  <% end %>
+
+  <% if content_for? :sidebar %>
+      <div class="row">
+        <div class="col-lg-6 content">
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+          <div class="panel panel-info" style="height: 500px">
+            <h3><%= yield :sidebar_header %></h3>
+            <%= yield(:sidebar) %>
+          </div>
+        </div>
+      </div>
+  <% else %>
+      <div class="content">
+        <%= yield %>
+      </div>
+  <% end %>
+
+
 
 </div>
 

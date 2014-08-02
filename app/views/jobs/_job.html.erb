@@ -1,0 +1,15 @@
+<li class="panel panel-default row">
+  <div class="title col-lg-8">
+    <h2><%= link_to job.title, job %></h2>
+    <h3><%= job.title %></h3>
+    <p>
+      <%= job.description %>
+    </p>
+  </div>
+  <div class="company col-lg-4">
+    <h4><%= link_to job.company.name, job.company %></h4>
+    <p class="location">
+      <%= job.company.address.country %>
+    </p>
+  </div>
+</li>

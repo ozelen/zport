@@ -15,10 +15,12 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
+    @person.address = Address.new
   end
 
   # GET /people/1/edit
   def edit
+    @person.address ||= Address.new
   end
 
   # POST /people
@@ -69,6 +71,7 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:nickname, :slug, :email, :first_name, :last_name)
+      params.require(:person).permit(:nickname, :slug, :email, :first_name, :last_name,
+                                     address_attributes: Address.attr_permitted)
     end
 end

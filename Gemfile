@@ -48,8 +48,8 @@ gem 'bootstrap-sass', '~> 3.1.0'
 gem 'bootstrap-datepicker-rails'
 gem 'simple_form'
 
-gem "paperclip"
-
+gem 'paperclip'
+gem 'jquery-fileupload-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

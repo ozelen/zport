@@ -4,5 +4,8 @@
     <%= f.input :email %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
+
+    <%= render 'addresses/form', f: f %>
+
     <%= f.button :submit, class: 'col-lg-offset-2 btn-default' %>
 <% end %>

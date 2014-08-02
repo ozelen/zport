@@ -1,34 +1,64 @@
+
+<% content_for :sidebar do %>
+    <div class="key">Started:</div>
+    <div class="value"><%= @project.started %></div>
+
+    <div class="key">Released:</div>
+    <div class="value"><%= @project.finished %></div>
+
+    <div class="key">Provided by:</div>
+    <div class="value"><%= @project.provider %></div>
+
+    <div class="key">Customer:</div>
+    <div class="value"><%= @project.customer %></div>
+
+    <div class="key">Team:</div>
+    <div class="value"><%= @project.team %></div>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<h1><%= @project.name %></h1>
 
-<p>
-  <strong>Description:</strong>
+<ul id="image_list">
+  <% @project.images.each do |image| %>
+      <li>
+        <%= image_tag image.picture.url(:medium) %>
+      </li>
+  <% end %>
+</ul>
+
+
+<div class="description">
   <%= @project.description %>
-</p>
+</div>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @project.customer_id %>
-</p>
 
-<p>
-  <strong>Provider:</strong>
-  <%= @project.provider_id %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<h2>Upload images:</h2>
 
-<p>
-  <strong>Team:</strong>
-  <%= @project.team %>
-</p>
+<%
+   @image = Image.new
+   @image.imageable = @project
+%>
+
+<%= simple_form_for @image, id: 'fileupload', :html => { :multipart => true } do |f| %>
+    <%= f.input :picture, type: :file, input_html: {multiple: true, name: 'image[picture]'} %>
+    <%= f.input :imageable_id, as: :hidden %>
+    <%= f.input :imageable_type, as: :hidden %>
+<% end %>
+
+<br/>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
+        {%=o.name%}
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+        </div>
+    </div>
+</script>

@@ -1,20 +1,6 @@
-<header>
-  <hgroup>
-    <h1>Employment</h1>
-    <h2>Jobs experience</h2>
-  </hgroup>
-</header>
-
-
+<% content_for :header, 'Employment' %>
 <nav>
-    <ul>
-    <% @jobs.each do |job| %>
-        <li>
-
-          <h1><%= link_to job.company, job %></h1>
-          <h2><%= job.title %></h2>
-
-        </li>
-    <% end %>
+    <ul class="jobs">
+        <%= render @jobs %>
     </ul>
 </nav>

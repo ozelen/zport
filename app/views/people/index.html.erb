@@ -1,13 +1,12 @@
 <h1>Listing people</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
+      <th>Name</th>
       <th>Nickname</th>
       <th>Slug</th>
       <th>Email</th>
-      <th>First name</th>
-      <th>Last name</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,11 +16,10 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
+        <td><%= link_to person, person %></td>
         <td><%= person.nickname %></td>
         <td><%= person.slug %></td>
         <td><%= person.email %></td>
-        <td><%= person.first_name %></td>
-        <td><%= person.last_name %></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

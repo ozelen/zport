@@ -15,7 +15,10 @@ Zport::Application.routes.draw do
 
   get 'skills' => 'pages#skills'
 
-  get 'employment' => 'pages#employment'
+  get 'portfolio'   => 'pages#portfolio',  as: :portfolio
+  get 'employment'  => 'pages#employment', as: :employment
+  get 'education'   => 'pages#education',  as: :education
+  get 'contacts'    => 'pages#contacts',   as: :contacts
 
   get 'jobs/types/:type_name' => 'jobs#index', as: :jobs_type
 

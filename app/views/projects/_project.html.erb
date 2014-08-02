@@ -1,0 +1,4 @@
+<%= content_tag_for :div, project do %>
+    <%= image_tag project.images.first.picture.url(:thumb) if project.images.first %>
+    <%= link_to project.name, project %>
+<% end %>

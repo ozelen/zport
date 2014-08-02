@@ -1,5 +1,9 @@
 <%= simple_form_for(@company, html: {class: 'form-horizontal' }) do |f| %>
     <%= f.input :name %>
     <%= f.input :description, as: :text %>
+
+    <%= render 'addresses/form', f: f %>
+
     <%= f.button :submit, class: 'col-lg-offset-2 btn-default' %>
+
 <% end %>

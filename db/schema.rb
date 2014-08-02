@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713135145) do
+ActiveRecord::Schema.define(version: 20140801202106) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "country"
+    t.string   "city"
+    t.string   "region"
+    t.string   "address"
+    t.integer  "zip"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "email"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
 
   create_table "assignments", force: true do |t|
     t.integer  "project_id"
@@ -90,9 +107,13 @@ ActiveRecord::Schema.define(version: 20140713135145) do
     t.string   "team"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "started"
+    t.date     "finished"
   end
 
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["finished"], name: "index_projects_on_finished", using: :btree
   add_index "projects", ["provider_id"], name: "index_projects_on_provider_id", using: :btree
+  add_index "projects", ["started"], name: "index_projects_on_started", using: :btree
 
 end

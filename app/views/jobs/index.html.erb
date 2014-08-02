@@ -10,11 +10,11 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Type</th>
+      <th>Company</th>
       <th>Title</th>
       <th>Since</th>
       <th>Till</th>
-      <th>Company</th>
+      <th>Type</th>
       <th>Person</th>
       <th></th>
     </tr>
@@ -23,11 +23,11 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.type %></td>
-        <td><%= job.title %></td>
+        <td><%= job.company %></td>
+        <td><%= link_to job.title, job %></td>
         <td><%= job.since %></td>
         <td><%= job.till %></td>
-        <td><%= job.company %></td>
+        <td><%= job.type %></td>
         <td><%= job.person %></td>
         <td class="controls">
           <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-default' %>

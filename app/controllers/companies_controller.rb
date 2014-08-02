@@ -15,10 +15,12 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.address = Address.new
   end
 
   # GET /companies/1/edit
   def edit
+    @company.address ||= Address.new
   end
 
   # POST /companies
@@ -69,6 +71,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :description)
+      params.require(:company).permit(:name, :description, address_attributes: Address.attr_permitted)
     end
 end
