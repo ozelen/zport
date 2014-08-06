@@ -1,0 +1,10 @@
+<h1>Skill list</h1>
+
+<div id="skill_categories" class="active_list">
+    <%= render @skill_categories %>
+</div>
+<%= render 'remote_form', skill_category: SkillCategory.new %>
+
+<br>
+
+<%= link_to 'New Skill category', new_skill_category_path %>

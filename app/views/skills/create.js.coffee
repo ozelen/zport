@@ -1,0 +1,1 @@
+$('#skill_category_<%=params[:skill_category_id]%> .skills').append '<%= escape_javascript render(@skill) %>'

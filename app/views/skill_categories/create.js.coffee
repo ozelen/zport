@@ -1,0 +1,1 @@
+$('#skill_categories').append '<%= escape_javascript render(@skill_category) %>'

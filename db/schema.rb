@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801202106) do
+ActiveRecord::Schema.define(version: 20140806200205) do
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -50,6 +50,21 @@ ActiveRecord::Schema.define(version: 20140801202106) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "experiences", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "skill_id"
+    t.integer  "person_id"
+    t.integer  "rate"
+    t.integer  "days"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiences", ["person_id"], name: "index_experiences_on_person_id", using: :btree
+  add_index "experiences", ["project_id"], name: "index_experiences_on_project_id", using: :btree
+  add_index "experiences", ["skill_id"], name: "index_experiences_on_skill_id", using: :btree
 
   create_table "images", force: true do |t|
     t.string   "title"
@@ -115,5 +130,21 @@ ActiveRecord::Schema.define(version: 20140801202106) do
   add_index "projects", ["finished"], name: "index_projects_on_finished", using: :btree
   add_index "projects", ["provider_id"], name: "index_projects_on_provider_id", using: :btree
   add_index "projects", ["started"], name: "index_projects_on_started", using: :btree
+
+  create_table "skill_categories", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "rate"
+    t.integer  "skill_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

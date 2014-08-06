@@ -1,0 +1,20 @@
+<%= content_tag_for :div, skill_category, class: 'panel panel-default' do %>
+
+    <div class="skill_category item panel-heading">
+        <div class="name pull-left">
+          <%= skill_category.name %>
+        </div>
+        <div class="controls pull-right">
+          <%= link_to 'Edit', edit_skill_category_path(skill_category), remote: true, class: 'btn btn-default' %>
+          <%= link_to 'Add skill', new_skill_category_skill_path(skill_category), remote: true, class: 'btn btn-default' %>
+          <%= link_to 'Destroy', skill_category, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-default' %>
+        </div>
+    </div>
+
+    <ul class="skills active_list list-group">
+      <%= render skill_category.skills %>
+    </ul>
+
+    <div class="new_skill panel-footer"></div>
+
+<% end %>

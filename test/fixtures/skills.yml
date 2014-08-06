@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rate: 1
+  categoty_id: 1
+  skillable_type: MyString
+  skillable_id: 1
+
+two:
+  name: MyString
+  rate: 1
+  categoty_id: 1
+  skillable_type: MyString
+  skillable_id: 1

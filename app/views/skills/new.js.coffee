@@ -1,0 +1,2 @@
+selector = '#skill_category_<%=params[:skill_category_id]%> .new_skill'
+$(selector).show().append('<%= escape_javascript render("remote_form", skill: @skill) %>') unless $(selector).find('form.new_skill')[0]

@@ -1,0 +1,44 @@
+
+.active_list {
+
+  .item {
+    min-height: 40px;
+
+    &>.controls {display: none;}
+
+    &:hover {
+      &>.controls {display: block;}
+    }
+
+    .name {
+    }
+
+  }
+
+  .form_skill {
+    .controls {
+      margin-top: 3px
+    }
+  }
+
+}
+
+.skill_category {
+   .controls {
+    margin-top: -8px;
+  }
+
+  div.new_skill {
+    display: none;
+  }
+}
+
+.skill {
+  padding-left: 20px;
+
+
+}
+
+input.form-control {
+  margin: 3px;
+}

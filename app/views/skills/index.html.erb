@@ -1,0 +1,10 @@
+<h1>Listing skillss</h1>
+
+<div id="skills">
+    <%= render @skills %>
+</div>
+<%= render 'remote_form', skill: Skill.new %>
+
+<br>
+
+<%= link_to 'New Skill', new_skill_path %>

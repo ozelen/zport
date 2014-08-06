@@ -1,0 +1,1 @@
+$('#skill_category_<%=@skill_category.id%>').remove()

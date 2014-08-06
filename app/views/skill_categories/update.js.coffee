@@ -1,0 +1,1 @@
+$('#edit_skill_category_<%=@skill_category.id%>').replaceWith '<%= escape_javascript render(@skill_category) %>'

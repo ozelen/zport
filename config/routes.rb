@@ -1,4 +1,9 @@
 Zport::Application.routes.draw do
+
+  resources :skill_categories do
+    resources :skills
+  end
+
   resources :images
 
   resources :assignments

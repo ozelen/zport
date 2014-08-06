@@ -1,0 +1,15 @@
+<%= form_for [@skill_category, skill], remote: true do |f| %>
+    <div class="row form_skill">
+      <div class="col-lg-8"><%= f.text_field :name, class: 'form-control', placeholder: "Enter name of new skill in \"#{@skill_category.name}\""  %></div>
+      <div class="col-lg-4 controls">
+        <%= f.hidden_field :skill_category_id, value: @skill_category.id %>
+        <%= f.button skill.new_record? ? 'Add' : 'Update' , class: 'btn btn-default' %>
+        <% if skill.new_record? %>
+            <button type="button" class="cancel btn btn-default">Cancel</button>
+        <% else %>
+            <%= link_to 'Cancel', [@skill_category, skill], remote: true, class: 'btn btn-default' %>
+        <% end %>
+        <%= link_to 'Cancel', skill.new_record? ? 'Add' : 'Update' , class: 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

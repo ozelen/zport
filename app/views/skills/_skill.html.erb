@@ -1,0 +1,12 @@
+<%= content_tag_for :li, skill, class: 'item list-group-item' do %>
+
+    <div class="name pull-left">
+      <%= skill.name %>
+    </div>
+
+    <div class="controls pull-right">
+      <%= link_to 'Edit', edit_skill_category_skill_path(skill.skill_category, skill), remote: true, class: 'btn btn-default' %>
+      <%= link_to 'Destroy', skill_category_skill_path(skill.skill_category, skill), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-default' %>
+    </div>
+
+<% end %>

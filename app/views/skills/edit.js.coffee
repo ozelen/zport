@@ -1,0 +1,1 @@
+$('#skill_<%=@skill.id%>').replaceWith('<%= escape_javascript (render("remote_form", skill: @skill)) %>')
