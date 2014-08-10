@@ -1,5 +1,13 @@
 Zport::Application.routes.draw do
 
+  get "experiences/show"
+  get "experiences/new"
+  get "experiences/create"
+  get "experiences/edit"
+  get "experiences/update"
+  get "experiences/destroy"
+  get "experiences/search"
+
   resources :skill_categories do
     resources :skills
   end
@@ -14,7 +22,9 @@ Zport::Application.routes.draw do
 
   resources :companies
 
-  resources :projects
+  resources :projects do
+    resources :experiences
+  end
 
   resources :pages
 

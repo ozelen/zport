@@ -1,0 +1,1 @@
+$('#experience_list').append '<%= escape_javascript render(@experience) %>'

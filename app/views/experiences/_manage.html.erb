@@ -1,0 +1,17 @@
+<h3>Experience</h3>
+
+<table id="experience_list" class="table table-hover">
+  <thead>
+  <tr>
+    <th>Skill</th>
+    <th>Rate</th>
+    <th>Duration</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @project.experiences %>
+  </tbody>
+</table>
+
+<%= render 'experiences/form' %>
