@@ -14,4 +14,6 @@
   </tbody>
 </table>
 
-<%= render 'experiences/form' %>
+<div class="experience_form"></div>
+
+<%= link_to 'New experience', new_project_experience_path(@project), remote: true, class: 'btn btn-default' %>

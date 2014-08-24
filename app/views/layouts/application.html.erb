@@ -11,7 +11,17 @@
 
 <div class="cover">
 
-<header class="navbar navbar-default" role="navigation">
+<header class="global-header navbar navbar-default" role="navigation">
+  <div class="contact-header">
+    <div class="container">
+
+      <ul class="info pull-left">
+        <li><a href="#"><i class="icon-mail-1 contact"></i> oleksa@zelenyuk.com</a></li>
+        <li><i class="icon-mobile contact"></i> +38 (050) 348 00 98</li>
+      </ul>
+
+    </div>
+  </div>
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -21,7 +31,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Oleksiy Zelenyuk', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Oleksiy <span class="zelenyuk">Zelenyuk</span>'.html_safe, root_path, class: 'navbar-brand' %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,38 +46,42 @@
   </div><!-- /.container-fluid -->
 </header>
 
-
-<div class="container">
-
-  <p id="notice"><%= notice %></p>
-
-  <% if content_for? :header %>
-      <header>
-        <h1><%= yield(:header) %></h1>
-      </header>
+  <% if content_for? :jumbo %>
+      <div class="jumbo-cover">
+        <section id="jumbo" class="jumbo container">
+          <%= yield(:jumbo) %>
+        </section>
+      </div>
   <% end %>
 
-  <% if content_for? :sidebar %>
-      <div class="row">
-        <div class="col-lg-6 content">
-          <%= yield %>
-        </div>
-        <div class="col-lg-3">
-          <div class="panel panel-info" style="height: 500px">
-            <h3><%= yield :sidebar_header %></h3>
-            <%= yield(:sidebar) %>
+  <div class="container">
+
+    <p id="notice"><%= notice %></p>
+
+    <% if content_for? :header %>
+        <header>
+          <h1><%= yield(:header) %></h1>
+        </header>
+    <% end %>
+
+    <% if content_for? :sidebar %>
+        <div class="row">
+          <div class="col-lg-6 content">
+            <%= yield %>
+          </div>
+          <div class="col-lg-3">
+            <div class="panel panel-info" style="height: 500px">
+              <h3><%= yield :sidebar_header %></h3>
+              <%= yield(:sidebar) %>
+            </div>
           </div>
         </div>
-      </div>
-  <% else %>
-      <div class="content">
-        <%= yield %>
-      </div>
-  <% end %>
-
-
-
-</div>
+    <% else %>
+        <div class="content">
+          <%= yield %>
+        </div>
+    <% end %>
+  </div>
 
 </div>
 

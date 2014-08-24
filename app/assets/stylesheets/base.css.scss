@@ -1,0 +1,97 @@
+@import "common";
+
+%main-menu-padding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+.global-header {
+
+  &.navbar-default {
+    background-color: #fff;
+  }
+
+  .contact-header {
+    height: 40px;
+    background-color: $navbar-default-bg;
+    border-bottom: $navbar-default-border 1px solid;
+    padding: 8px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: table-cell;
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .main-menu {
+    text-transform: uppercase;
+
+    ul.nav > li > a {
+      @extend %main-menu-padding;
+
+      font-weight: bold;
+    }
+  }
+
+  .navbar-header {
+    a {
+      @extend %main-menu-padding;
+
+      font-weight: bold;
+      font-size: 30px;
+
+      .zelenyuk {
+        color: $green3;
+      }
+    }
+  }
+}
+
+.icon-mail-1:before {
+  content: '\e802';
+}
+
+.icon-mobile:before {
+  content: '\f4f1';
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0;
+  text-align: center;
+  line-height: 1em;
+}
+
+i, cite, em, var, address, dfn {
+  font-style: italic;
+}
+
+.jumbo-cover {
+  background: #2E2F30;
+  height: 400px;
+  margin-top: -20px;
+
+  section.jumbo {
+    color: #fff;
+    padding-top: 100px;
+
+    h1 {
+      font-size: 60px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}

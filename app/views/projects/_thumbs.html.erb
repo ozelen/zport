@@ -1,0 +1,14 @@
+<% @projects.in_groups_of(3, false) do |row_projects| %>
+    <div class="row">
+      <% row_projects.each do |project| %>
+          <%= content_tag_for :div, project, class: 'col-lg-4' do %>
+              <div class="thumbnail">
+                <%= image_tag project.images.first.picture.url(:thumb) if project.images.first %>
+                <div class="caption">
+                  <%= link_to project.name, project %>
+                </div>
+              </div>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>

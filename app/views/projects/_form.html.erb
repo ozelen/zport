@@ -4,5 +4,7 @@
     <%= f.association :provider %>
     <%= f.input :description, as: :text %>
     <%= f.input :team %>
+    <%= f.input :started, as: :string, input_html: { class: 'datepicker' } %>
+    <%= f.input :finished, as: :string, input_html: { class: 'datepicker' } %>
     <%= f.button :submit, class: 'col-lg-offset-2 btn-default' %>
 <% end %>

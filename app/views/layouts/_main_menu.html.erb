@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="main-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
     <% elements.each do |item| %>
         <li class="<%= 'active' if (request.fullpath =~ /#{item[1]}/) %>"><%= link_to item[0], item[1] %></li>

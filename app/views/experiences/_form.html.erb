@@ -1,7 +1,7 @@
 <% @experience ||= Experience.new(project_id: @project.id) %>
-<%= simple_form_for [@project, @experience], remote: true do |f| %>
+<%= simple_form_for [@project, @experience], remote: true, html: {class: 'experience_form'} do |f| %>
     <div class="panel panel-default">
-      <div class="panel-heading">Add experience</div>
+      <div class="panel-heading"><%= @experience.new_record? ? 'Add new' : 'Edit' %> experience</div>
       <div class="panel-body">
         <!--<input type="text" id="skill_name_form"/> -->
         <%= f.association :skill %>

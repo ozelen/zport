@@ -52,5 +52,8 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'jquery-fileupload-rails'
 
+gem 'devise'
+gem 'cancan'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

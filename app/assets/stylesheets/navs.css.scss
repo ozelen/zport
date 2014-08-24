@@ -42,7 +42,8 @@ nav.sub-menu {
 html, body { height: 100%; }
 
 body > footer {
-  background: $green2;
+  background: $navbar-default-bg;
+  border-top: $navbar-default-border 1px solid;
   height: 100px;
   padding-top: 20px;
 }

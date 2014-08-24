@@ -1,0 +1,1 @@
+$('.experience_form').replaceWith('<%= escape_javascript (render("experiences/form", experience: @experience)) %>')

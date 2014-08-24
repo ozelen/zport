@@ -5,22 +5,24 @@ $green4: #69BD43;
 $green5: #55A72F;
 $green6: #3c7b22;
 
-$body-bg: white;
-$navbar-default-bg: $green4;
-$navbar-default-link-color: #fff;
-$navbar-default-link-active-color: $green1;
-$navbar-default-link-hover-color: $green1;
+//$body-bg: white;
+//$navbar-default-bg: $green4;
+//$navbar-default-link-color: #fff;
+//$navbar-default-link-active-color: $green1;
+//$navbar-default-link-hover-color: $green1;
+//
+//$navbar-inverse-bg: $green4;
+//$navbar-inverse-link-color: #fff;
+//$navbar-inverse-link-active-color: $green1;
+//$navbar-inverse-link-hover-color: $green1;
+//$navbar-inverse-link-hover-bg: $green6;
+//
+//$jumbotron-bg: $green3;
+//
+//$light-orange: #ff8c00;
+//$navbar-default-color: #fff;
+//$navbar-border-radius: 0;
 
-$navbar-inverse-bg: $green4;
-$navbar-inverse-link-color: #fff;
-$navbar-inverse-link-active-color: $green1;
-$navbar-inverse-link-hover-color: $green1;
-$navbar-inverse-link-hover-bg: $green6;
-
-$jumbotron-bg: $green3;
-
-$light-orange: #ff8c00;
-$navbar-default-color: #fff;
-$navbar-border-radius: 0;
+$font-family-sans-serif: 'Source Sans Pro';
 
 @import "bootstrap";

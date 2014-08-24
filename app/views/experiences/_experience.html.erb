@@ -1,6 +1,10 @@
-<tr>
-  <td><%= experience %></td>
-  <td><%= experience.rate %></td>
-  <td><%= experience.days %></td>
-  <td><%= experience.description %></td>
-</tr>
+<%= content_tag_for :tr, experience do %>
+    <td><%= experience %></td>
+    <td><%= experience.rate %></td>
+    <td><%= experience.days %></td>
+    <td><%= experience.description %></td>
+    <td class="controls">
+      <%= link_to 'Edit', edit_project_experience_path(@project, experience), remote: true, class: 'btn btn-default' %>
+      <%= link_to 'Delete', [@project, experience], method: :delete, remote: true, class: 'btn btn-default' %>
+    </td>
+<% end %>
