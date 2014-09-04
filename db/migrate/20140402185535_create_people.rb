@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :nickname
       t.string :slug
-      t.string :email
+      #t.string :email # defined in devise
       t.string :first_name
       t.string :last_name
 

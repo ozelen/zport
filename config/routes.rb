@@ -1,5 +1,6 @@
 Zport::Application.routes.draw do
 
+  devise_for :people
   get "experiences/show"
   get "experiences/new"
   get "experiences/create"
