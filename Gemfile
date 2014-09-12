@@ -55,5 +55,10 @@ gem 'jquery-fileupload-rails'
 gem 'devise'
 gem 'cancan'
 
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+gem 'pygmentize'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

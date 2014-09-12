@@ -1,0 +1,191 @@
+<% content_for :header, 'Curriculum Vitae' %>
+<% content_for :sidebar do %>
+    <nav class="sidebar-menu" data-spy="affix" data-offset-top="200" data-offset-bottom="0">
+      <ul class="nav">
+        <li>
+          <a href="#summary-of-qualifications">
+            Summary of Qualifications</a>
+        </li>
+        <li>
+          <a href="#skills">
+            Skills in details
+          </a>
+        </li>
+        <li>
+          <a href="#employment-history">
+            Employment history
+          </a>
+
+        </li>
+        <li>
+          <a href="#education">
+            Education
+          </a>
+        </li>
+        <li>
+          <a href="#projects-experience">
+            Project Experience
+          </a>
+          <ul class="nav">
+            <% @site_owner.assignments.each do |assignment| %>
+                <li><a href="#assignment_<%= assignment.id %>"><%= assignment.project.name %></a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+<% end %>
+
+<% @page_id = 'cv' %>
+
+<section id="summary-of-qualifications">
+  <h2>Summary of Qualifications</h2>
+  <%= markdown @site_owner.summary %>
+</section>
+
+<section id="skills">
+  <h2>Skills in details</h2>
+  <%= render 'skills/skill_summary', categories: @skill_cats, skills: @skill_sum %>
+</section>
+
+<section id="employment-history" class="key_value">
+  <h2>Employment history</h2>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Job description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @site_owner.employers.each do |job| %>
+        <tr>
+          <th><%= job.since.year %> &mdash; <%= job.till.try(:year) || 'now' %></th>
+          <td><%= job.title %> in <%= job.company %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section id="education" class="key_value">
+  <h2>Education</h2>
+
+  <h3>Degree</h3>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Duration</th>
+      <th>School</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @site_owner.schools.each do |job| %>
+        <tr>
+          <th><%= job.since.year %> &mdash; <%= job.till.try(:year) || 'now' %></th>
+          <td><%= job.title %> in <%= job.company %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <h3>Languages</h3>
+
+  <%= render 'skills/language_summary', languages: @skill_sum %>
+
+  <h3>Certifications</h3>
+
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>Certification</th>
+      <th>Value</th>
+      <th>Year</th>
+    </tr>
+    <% Certification.all.each do |cert| %>
+        <tr>
+          <td></td>
+          <td><%= cert.name %></td>
+          <td><%= cert.value %></td>
+          <td><%= cert.year %></td>
+        </tr>
+    <% end %>
+  </table>
+
+</section>
+
+<section id="projects-experience" class="key_value">
+  <h2>Project Experience</h2>
+
+  <% @site_owner.assignments.each do |assignment| %>
+      <% project = assignment.project %>
+
+      <%= content_tag_for :section, assignment do %>
+          <h3><%= project.name %></h3>
+
+          <table class="table">
+            <tr>
+              <th>Project Description:</th>
+              <td class="col-lg-9"><%= project.description %></td>
+            </tr>
+            <tr>
+              <th>Customer:</th>
+              <td><%= project.customer %></td>
+            </tr>
+            <tr>
+              <th>Provider:</th>
+              <td><%= project.provider %></td>
+            </tr>
+            <tr>
+              <th>Project Role:</th>
+              <td><%= assignment.role %></td>
+            </tr>
+            <tr>
+              <th>Responsibilities:</th>
+              <td><%= assignment.description %></td>
+            </tr>
+            <tr>
+              <th>Project Team Size:</th>
+              <td><%= project.team %></td>
+            </tr>
+            <tr>
+              <th>Tools & Technologies:</th>
+              <td>
+
+                <% assignment.skill_categories.uniq.in_groups_of(2) do |group| %>
+
+                    <div class="row">
+
+                      <% group.each do |skill_category| %>
+                          <section class="skill_category col-lg-5">
+                            <header><%= skill_category %></header>
+                            <ul>
+                              <% assignment.skills.each do |skill| %>
+                                  <% if skill.skill_category == skill_category %>
+                                      <li class="icon">
+                                        <span class="icon icon-<%= skill.slug %>"></span>
+                                        <%= skill %>
+                                      </li>
+                                  <% end %>
+                              <% end %>
+                            </ul>
+                          </section>
+                      <% end %>
+
+                    </div>
+
+                <% end %>
+
+              </td>
+            </tr>
+            <tr>
+              <th>Involvement Duration:</th>
+              <td><%= days_in_words( (assignment.till || Date::today()) - assignment.since ) %></td>
+            </tr>
+          </table>
+      <% end %>
+
+  <% end %>
+
+</section>

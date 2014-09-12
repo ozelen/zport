@@ -1,12 +1,13 @@
 Zport::Application.routes.draw do
 
-  get "experiences/show"
-  get "experiences/new"
-  get "experiences/create"
-  get "experiences/edit"
-  get "experiences/update"
-  get "experiences/destroy"
-  get "experiences/search"
+
+  resources :certifications
+
+  get 'cv'          => 'pages#cv',        as: :cv
+  get 'contacts'    => 'pages#contacts',  as: :contacts
+
+  resources :experiences
+  get 'experiences/search'
 
   resources :skill_categories do
     resources :skills
@@ -14,7 +15,9 @@ Zport::Application.routes.draw do
 
   resources :images
 
-  resources :assignments
+  resources :assignments do
+    resources :experiences
+  end
 
   resources :jobs
 
@@ -22,18 +25,16 @@ Zport::Application.routes.draw do
 
   resources :companies
 
-  resources :projects do
-    resources :experiences
-  end
+  resources :projects
 
   resources :pages
+
 
   get 'skills' => 'pages#skills'
 
   get 'portfolio'   => 'pages#portfolio',  as: :portfolio
   get 'employment'  => 'pages#employment', as: :employment
   get 'education'   => 'pages#education',  as: :education
-  get 'contacts'    => 'pages#contacts',   as: :contacts
 
   get 'jobs/types/:type_name' => 'jobs#index', as: :jobs_type
 

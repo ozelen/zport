@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806200205) do
+ActiveRecord::Schema.define(version: 20140908193336) do
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140806200205) do
     t.integer  "project_id"
     t.integer  "person_id"
     t.string   "role"
-    t.string   "description"
+    t.text     "description"
     t.date     "since"
     t.date     "till"
     t.datetime "created_at"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20140806200205) do
   add_index "assignments", ["person_id"], name: "index_assignments_on_person_id", using: :btree
   add_index "assignments", ["project_id"], name: "index_assignments_on_project_id", using: :btree
 
+  create_table "certifications", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "day_passed"
+    t.string   "link"
+    t.float    "value"
+    t.float    "max_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -52,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140806200205) do
   end
 
   create_table "experiences", force: true do |t|
-    t.integer  "project_id"
+    t.integer  "assignment_id"
     t.integer  "skill_id"
     t.integer  "person_id"
     t.integer  "rate"
@@ -62,8 +73,8 @@ ActiveRecord::Schema.define(version: 20140806200205) do
     t.datetime "updated_at"
   end
 
+  add_index "experiences", ["assignment_id"], name: "index_experiences_on_assignment_id", using: :btree
   add_index "experiences", ["person_id"], name: "index_experiences_on_person_id", using: :btree
-  add_index "experiences", ["project_id"], name: "index_experiences_on_project_id", using: :btree
   add_index "experiences", ["skill_id"], name: "index_experiences_on_skill_id", using: :btree
 
   create_table "images", force: true do |t|
@@ -112,7 +123,20 @@ ActiveRecord::Schema.define(version: 20140806200205) do
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.text     "summary"
   end
+
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"

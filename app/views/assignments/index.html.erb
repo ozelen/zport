@@ -1,25 +1,31 @@
-<h1>Listing assignments</h1>
+<h1>Assignments</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Project</th>
+    <th>Role</th>
+    <th>Since</th>
+    <th>Till</th>
+    <th>Actions</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
+  <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to assignment.project, assignment %></td>
+        <td><%= assignment.role %></td>
+        <td><%= assignment.since %></td>
+        <td><%= assignment.till %></td>
+
+        <td>
+          <%= link_to 'Edit', edit_assignment_path(assignment), class: 'btn btn-default' %>
+          <%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+        </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Assignment', new_assignment_path %>
+<%= link_to 'New Assignment', new_assignment_path, class: 'btn btn-default' %>

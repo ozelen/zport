@@ -26,6 +26,12 @@ class PagesController < ApplicationController
     @person = Person.first
   end
 
+  def cv
+    @skill_cats = @site_owner.skill_cats
+    @langs      = @site_owner.languages
+    @skill_sum  = @site_owner.skill_sum
+  end
+
   # GET /pages
   # GET /pages.json
   def index

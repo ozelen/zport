@@ -1,0 +1,72 @@
+@import "common";
+
+body.cv {
+  section.key_value {
+    .row {
+      border-bottom: #ccc solid 1px;
+      &>div {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  span.icon {
+    width: 30px;
+  }
+
+  .icon {
+    &::before {
+      zoom: 1.5;
+      color: $brand-primary;
+      margin-right: 5px;
+    }
+  }
+
+  .skill_category {
+    header {
+      font-weight: bold;
+      color: $gray-light;
+    }
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        margin: 10px 0 10px 0;
+      }
+    }
+  }
+
+  th.rate {
+    width: 200px;
+  }
+
+  .progress {
+    margin: 0;
+    width: 200px;
+  }
+
+  section {
+    margin-bottom: 80px;
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      background: #ccc;
+      color: #fff;
+      padding: 3px;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 0;
+    }
+
+    &.skill_category {
+      margin-right: 20px;
+    }
+  }
+}

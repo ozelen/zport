@@ -1,0 +1,36 @@
+<table class="table table-hover">
+  <thead>
+  <th>Skill</th>
+  <th>Experience time</th>
+  <th>Last time faced</th>
+  <th class="rate">Relative Rate</th>
+  </thead>
+  <tbody>
+
+  <% categories.each do |c| %>
+      <tr>
+        <th colspan="4"><%= c %>:</th>
+      </tr>
+      <% skills.each do |skill_summary| %>
+          <% if skill_summary.category_name == c %>
+              <%
+                 relative_rate = skill_summary.max_rate * 100 / Experience.maximum(:rate)
+              %>
+              <tr>
+                <td><span class="icon icon-<%= skill_summary.skill_slug %>"></span><%= skill_summary.skill_name %></td>
+                <td><%= days_in_words(skill_summary.sum_days) %></td>
+                <td><%= time_ago(skill_summary.latest_experience) %></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<%= relative_rate %>" aria-valuemin="<%= relative_rate %>" aria-valuemax="100" style="width: <%= relative_rate %>%;">
+                      <%= relative_rate %> %
+                    </div>
+                  </div>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+
+  </tbody>
+</table>

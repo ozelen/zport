@@ -2,7 +2,7 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :person
 
-  TYPES = %w(job education client)
+  TYPES = %w(employer school client)
 
   scope :by_type, -> (type_name) { where(type_id: TYPES.index(type_name)) }
 

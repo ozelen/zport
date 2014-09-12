@@ -6,7 +6,7 @@ class ExperiencesController < ApplicationController
 
   def new
     @experience = Experience.new
-    @experience.project = @project = Project.find(params[:project_id])
+    @experience.assignment = @assignment = Assignment.find(params[:assignment_id])
     respond_to do |format|
       format.js
     end
@@ -18,8 +18,8 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
-    @experience.project ||= Project.find(params[:project_id])
-    @project = @experience.project
+    @experience.assignment ||= Assignment.find(params[:assignment_id])
+    @assignment = @experience.assignment
 
     respond_to do |format|
       if @experience.save
@@ -57,11 +57,11 @@ class ExperiencesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_experience
       @experience = Experience.find(params[:id])
-      @project = @experience.project or Project.find params[:project_id]
+      @assignment = @experience.assignment or Assignment.find params[:assignment_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:project_id, :skill_id, :person_id, :rate, :days, :description)
+      params.require(:experience).permit(:assignment_id, :skill_id, :person_id, :rate, :days, :description)
     end
 end

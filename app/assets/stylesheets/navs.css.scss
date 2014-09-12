@@ -58,3 +58,19 @@ li.panel {
   list-style: none;
   padding: 5px;
 }
+
+.sidebar-menu {
+  &.affix {
+    top: 20px;
+  }
+
+  li.active {
+    & > a {
+      font-weight: bold;
+    }
+  }
+}
+
+.nav .nav {
+  margin-left: 20px;
+}

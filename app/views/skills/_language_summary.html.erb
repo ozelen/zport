@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+  <th>Language</th>
+  <th>Last time used</th>
+  <th class="rate">Level</th>
+  </thead>
+  <tbody>
+
+      <% languages.each do |skill_summary| %>
+          <% if skill_summary.category_name == 'Languages' %>
+              <tr>
+                <td><span class="icon icon-<%= skill_summary.skill_slug %>"></span><%= skill_summary.skill_name %></td>
+                <td><%= time_ago(skill_summary.latest_experience) %></td>
+                <td>
+                  <%= skill_summary.lang_summary %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+
+  </tbody>
+</table>

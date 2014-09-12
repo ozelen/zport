@@ -10,10 +10,10 @@
   </tr>
   </thead>
   <tbody>
-  <%= render @project.experiences %>
+  <%= render @assignment.experiences %>
   </tbody>
 </table>
 
 <div class="experience_form"></div>
 
-<%= link_to 'New experience', new_project_experience_path(@project), remote: true, class: 'btn btn-default' %>
+<%= link_to 'New experience', new_assignment_experience_path(@assignment), remote: true, class: 'btn btn-default' %>

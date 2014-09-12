@@ -13,7 +13,7 @@
         <td><%= link_to project.customer.name, project.customer if project.customer %></td>
         <td><%= link_to project.provider.name, project.provider if project.provider %></td>
         <td class="controls">
-          <%= link_to 'Edit', edit_company_path(project), class: 'btn btn-default' %>
+          <%= link_to 'Edit', edit_project_path(project), class: 'btn btn-default' %>
           <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
         </td>
       </tr>

@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @assignment %> |
-<%= link_to 'Back', assignments_path %>
+<h2>Experience</h2>
+<%= render 'experiences/manage' %>
+
+
+<hr/>
+<%= link_to 'Show', @assignment, class: 'btn btn-default' %>
+<%= link_to 'Back', assignments_path, class: 'btn btn-default' %>

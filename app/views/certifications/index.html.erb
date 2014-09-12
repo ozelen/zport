@@ -1,0 +1,32 @@
+<h1>Listing certifications</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certifications.each do |certification| %>
+      <tr>
+        <td><%= link_to certification.name, certification %></td>
+        <td><%= certification.day_passed %></td>
+        <td><%= certification.link.present? ? 'yes' : 'no' %></td>
+        <td><%= "#{certification.value}  of #{certification.max_value}" if certification.value %></td>
+        <td>
+          <%= link_to 'Edit', edit_certification_path(certification), class: 'btn btn-default' %>
+          <%= link_to 'Destroy', certification, method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'New Certification', new_certification_path, class: 'btn btn-default' %>

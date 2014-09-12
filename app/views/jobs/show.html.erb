@@ -22,7 +22,7 @@
 
     <p>
       <strong>Projects:</strong>
-      <%= @job.company.projects.count if @job.company.projects %>
+      <%= @job.company.projects.count if @job.company and @job.company.projects %>
     </p>
 <% end %>
 
@@ -32,7 +32,7 @@
   <%= @job.description %>
 </div>
 
-<% if @job.company.projects %>
+<% if @job.company and @job.company.projects %>
     <h3>Projects:</h3>
     <%= render @job.company.projects %>
 <% end %>
