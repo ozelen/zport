@@ -1,4 +1,8 @@
 class Person < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_one :address, as: :addressable
   has_many :assignments, dependent: :destroy
   has_many :projects, through: :assignments
@@ -9,7 +13,8 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   def to_s
-    "#{first_name} #{last_name}"
+    name = "#{first_name} #{last_name}"
+    name.strip.present? ? name : email
   end
 
   def self.me
@@ -43,6 +48,11 @@ class Person < ActiveRecord::Base
 
   def skill_cats
     skill_sum.map {|s| s.category_name unless s.category_name == 'Languages' }.uniq
+  end
+
+  def admin?
+    # TODO: apply cancan or another authorization
+    id == 3
   end
 
 end

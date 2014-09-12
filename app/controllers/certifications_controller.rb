@@ -1,5 +1,6 @@
 class CertificationsController < ApplicationController
   before_action :set_certification, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   # GET /certifications
   # GET /certifications.json

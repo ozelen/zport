@@ -1,5 +1,6 @@
 class SkillCategoriesController < ApplicationController
   before_action :set_skill_category, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   # GET /skill_categories
   # GET /skill_categories.json

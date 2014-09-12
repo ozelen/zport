@@ -1,6 +1,5 @@
 Zport::Application.routes.draw do
 
-
   resources :certifications
 
   get 'cv'          => 'pages#cv',        as: :cv
@@ -8,6 +7,16 @@ Zport::Application.routes.draw do
 
   resources :experiences
   get 'experiences/search'
+
+  resources :people
+
+  devise_for :people, path: 'auth',
+             path_names: {
+                 sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification',
+                 unlock: 'unblock', registration: 'register', sign_up: 'signup' },
+             controllers: {
+                 registrations: 'registrations'
+             }
 
   resources :skill_categories do
     resources :skills
@@ -20,8 +29,6 @@ Zport::Application.routes.draw do
   end
 
   resources :jobs
-
-  resources :people
 
   resources :companies
 

@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
     @site_owner = Person.find(1)
   end
 
+  def authorize
+    authenticate_person! unless current_person
+    redirect_to root_url, notice: 'Access denied' unless current_person.admin?
+  end
+
+
 end
