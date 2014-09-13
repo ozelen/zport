@@ -60,5 +60,7 @@ gem 'albino'
 gem 'nokogiri'
 gem 'pygmentize'
 
+gem 'angularjs-rails'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
