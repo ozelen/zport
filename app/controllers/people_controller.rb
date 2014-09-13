@@ -1,5 +1,27 @@
-class PeopleController < Devise::RegistrationsController
-  before_action :authorize
+class PeopleController < ApplicationController
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
+
+  # GET /people
+  # GET /people.json
+  def index
+    @people = Person.all
+  end
+
+  # GET /people/1
+  # GET /people/1.json
+  def show
+  end
+
+  # GET /people/new
+  def new
+    @person = Person.new
+    @person.address = Address.new
+  end
+
+  # GET /people/1/edit
+  def edit
+    @person.address ||= Address.new
+  end
 
   # POST /people
   # POST /people.json
@@ -31,10 +53,25 @@ class PeopleController < Devise::RegistrationsController
     end
   end
 
+  # DELETE /people/1
+  # DELETE /people/1.json
+  def destroy
+    @person.destroy
+    respond_to do |format|
+      format.html { redirect_to people_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_person
+      @person = Person.find(params[:id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:nickname, :slug, :email, :first_name, :last_name, :summary,
-                                     address_attributes: Address.attr_permitted,  :password, :password_confirmation)
+      params.require(:person).permit(:nickname, :slug, :email, :first_name, :last_name, :password, :summary,
+                                     address_attributes: Address.attr_permitted)
     end
 end
