@@ -27,9 +27,13 @@ class PagesController < ApplicationController
   end
 
   def cv
-    @skill_cats = @site_owner.skill_cats
-    @langs      = @site_owner.languages
-    @skill_sum  = @site_owner.skill_sum
+    if @site_owner
+      @skill_cats = @site_owner.skill_cats
+      @langs      = @site_owner.languages
+      @skill_sum  = @site_owner.skill_sum
+    else
+      render text: 'No user'
+    end
   end
 
   # GET /pages

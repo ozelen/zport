@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_site_owner
-    @site_owner = Person.find(1)
+    @site_owner = Person.first
   end
 
   def authorize
