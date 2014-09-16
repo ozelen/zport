@@ -55,17 +55,18 @@
         content: '';
         position: absolute;
         left: 100%;
-        top: 90px;
+        top: 80px;
         margin-top: -8px;
         width: 50px;
         height: 0;
-        border-left: 100px solid $green3;
+        border-left: 60px solid $green3;
         border-top: 10px solid transparent;
         border-bottom: 40px solid transparent;
 
       }
     }
 
+    @media (min-width: 480px) { .hello-tooltip::after { border-left-width: 120px; }}
     @media (min-width: 768px) { .hello-tooltip { width: 380px; &::after { top: 40%; border-left-width: 150px; border-top-width: 25px; border-bottom-width: 25px; }}}
     @media (min-width: 992px) { .hello-tooltip { width: 350px; &::after { top: 30%; border-left-width: 150px; border-top-width: 10px; border-bottom-width: 40px; }}}
     @media (min-width: 1200px){ .hello-tooltip { width: 490px; &::after { top: 30%; border-left-width: 200px; border-top-width: 10px; border-bottom-width: 40px; }}}
