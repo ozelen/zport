@@ -1,0 +1,100 @@
+@import "common";
+
+@mixin simple-gradient($color1, $color2) {
+  background: $color1; /* Old browsers */
+  background: -moz-linear-gradient(top,  $color1 4%, $color2 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,$color1), color-stop(100%,$color2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $color1 4%,$color2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $color1 4%,$color2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $color1 4%,$color2 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $color1 4%,$color2 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin shadow {
+  -webkit-box-shadow: 11px 0px 58px 0px rgba(0,0,0,0.62);
+  -moz-box-shadow: 11px 0px 58px 0px rgba(0,0,0,0.62);
+  box-shadow: 11px 0px 58px 0px rgba(0,0,0,0.62);
+}
+
+%photo-gradient {
+  //@include simple-gradient(#1c3d54, #4585b2);
+  @include simple-gradient(#6098BE, #d7e4ef);
+}
+
+
+.jumbo-cover {
+  background: #1A2733;
+  height: 400px;
+  margin-top: -20px;
+
+  section.jumbo {
+    color: #fff;
+
+    h1 {
+      font-size: 60px;
+    }
+    p {
+      font-size: 20px;
+    }
+
+    .hello-tooltip {
+      margin-top: 60px;
+      padding: 10px 20px;
+      background: $green3;
+      width: 50%;
+      position: absolute;
+      z-index: 1;
+      border-radius: 10px;
+
+      @include shadow;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 30%;
+        margin-top: -8px;
+        width: 50px;
+        height: 0;
+        border-left: 100px solid $green3;
+        border-top: 10px solid transparent;
+        border-bottom: 40px solid transparent;
+
+      }
+    }
+
+    @media (min-width: 768px) { .hello-tooltip { width: 380px; &::after { top: 40%; border-left-width: 150px; border-top-width: 25px; border-bottom-width: 25px; }}}
+    @media (min-width: 992px) { .hello-tooltip { width: 350px; &::after { top: 30%; border-left-width: 150px; border-top-width: 10px; border-bottom-width: 40px; }}}
+    @media (min-width: 1200px){ .hello-tooltip { width: 490px; &::after { top: 30%; border-left-width: 200px; border-top-width: 10px; border-bottom-width: 40px; }}}
+
+
+  }
+
+  .portrait {
+    //@extend %photo-gradient;
+    //background: #6098BE;
+    background: #0F4970;
+    border-radius: 100%;
+    width: 510px;
+    height: 510px;
+    position: absolute;
+    left: 45%;
+
+    img {
+      position: relative;
+      top: -120px;
+      left: 22px;
+    }
+  }
+
+  .portrait {
+    zoom: .6;
+    top: 300px;
+    left: 50%;
+  }
+  @media (min-width: 768px) { .portrait { zoom: .7; left: 55%; top: 255px } }
+  @media (min-width: 992px) { .portrait { left: 42%; top: 180px; zoom: .8; } }
+  @media (min-width: 1200px) { .portrait { left: 45%; top: 130px; zoom: 1;} }
+
+}

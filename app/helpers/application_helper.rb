@@ -29,6 +29,12 @@ module ApplicationHelper
     (Date::today - date).try(:days) > 0 ? time_ago_in_words( date ) + ' ago' : 'now'
   end
 
+  def title(text = nil)
+    @headers ||= []
+    @headers.push text if text.present?
+    @site_title = @headers.join(' - ')
+  end
+
   class PygmentizeHTML < Redcarpet::Render::HTML
     def block_code(code, language)
       require 'pygmentize'

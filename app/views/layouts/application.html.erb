@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Zport</title>
+  <title><%= title 'Oleksiy Zelenyuk Home Page' %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -58,6 +58,10 @@
       <div class="jumbo-cover">
         <section id="jumbo" class="jumbo container">
           <%= yield(:jumbo) %>
+
+          <div class="portrait">
+            <%= image_tag 'circled.png' %>
+          </div>
         </section>
       </div>
   <% end %>
@@ -91,7 +95,7 @@
 
 <footer>
   <div class="container">
-    &copy; Zelenyuk
+    &copy; Oleksiy Zelenyuk 2014
   </div>
 </footer>
 

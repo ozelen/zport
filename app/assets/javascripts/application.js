@@ -18,5 +18,6 @@
 //= require bootstrap-datepicker
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require angular
 //= require_tree .
 
