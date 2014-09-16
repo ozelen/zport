@@ -76,15 +76,23 @@
   .portrait {
     //@extend %photo-gradient;
     //background: #6098BE;
-    background: #0F4970;
-    border-radius: 100%;
-    width: 510px;
-    height: 510px;
-    position: relative;
+    position: absolute;
 
     zoom: .6;
-    top: 130px;
-    left: 50%;
+    top: 20px;
+    width: 400px;
+    overflow: hidden;
+
+    padding-top: 120px;
+    height: 650px;
+    right: 0px;
+
+    .circle {
+      background: #0F4970;
+      border-radius: 100%;
+      width: 510px;
+      height: 510px;
+    }
 
     img {
       position: relative;
@@ -93,8 +101,8 @@
     }
   }
 
-  @media (min-width: 768px)  { .portrait { left: 55%; top: 100px; zoom: .7; }}
-  @media (min-width: 992px)  { .portrait { left: 42%; top: 20px;  zoom: .8; }}
-  @media (min-width: 1200px) { .portrait { left: 45%; top: 10px;  zoom:  1; }}
+  @media (min-width: 768px)  { .portrait { left: 55%; top: -20px;   zoom: .7; width: 510px }}
+  @media (min-width: 992px)  { .portrait { left: 42%; top: -80px;   zoom: .8; }}
+  @media (min-width: 1200px) { .portrait { left: 45%; top: -110px;  zoom:  1; }}
 
 }
