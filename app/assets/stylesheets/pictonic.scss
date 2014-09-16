@@ -2,11 +2,11 @@
 @font-face
 { 
     font-family: "pictonic";
-    src: asset_url('/assets/pictonic.eot');
-    src: asset_url('/assets/pictonic.eot?#iefix') format('embedded-opentype'),
-        asset_url('/assets/pictonic.ttf') format('truetype'),
-        asset_url('/assets/pictonic.woff') format('woff'),
-        asset_url('/assets/font/pictonic.svg') format('svg');
+    src: font-url('/assets/pictonic.eot');
+    src: font-url('/assets/pictonic.eot?#iefix') format('embedded-opentype'),
+         font-url('/assets/pictonic.ttf') format('truetype'),
+         font-url('/assets/pictonic.woff') format('woff'),
+         font-url('/assets/font/pictonic.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
