@@ -19,13 +19,6 @@
         <li><a href="#"><i class="fontello-icon-mail-1 contact"></i> oleksa@zelenyuk.com</a></li>
         <li><i class="fontello-icon-mobile contact"></i> +38 (050) 348 00 98</li>
       </ul>
-      
-      <ul class="pull-right social-icons">
-        <li><a href="https://github.com/ozelen/"                target="_blank" class="icon-github-01"></a></li>
-        <li><a href="https://www.linkedin.com/in/ozelen"        target="_blank" class="icon-linkedin"></a></li>
-        <li><a href="https://www.facebook.com/ozelenyuk"        target="_blank" class="icon-facebook"></a></li>
-        <li><a href="https://plus.google.com/+OleksaZelenyuk"   target="_blank" class="icon-google__x2B_"></a></li>
-      </ul>
 
     </div>
   </div>
@@ -62,11 +55,21 @@
           <div class="portrait">
             <%= image_tag 'circled.png' %>
           </div>
+
+          <ul class="social-icons">
+            <li><a href="https://github.com/ozelen/"                target="_blank" class="icon-github-01"></a></li>
+            <li><a href="https://www.linkedin.com/in/ozelen"        target="_blank" class="icon-linkedin"></a></li>
+            <li><a href="https://www.facebook.com/ozelenyuk"        target="_blank" class="icon-facebook"></a></li>
+            <li><a href="https://plus.google.com/+OleksaZelenyuk"   target="_blank" class="icon-google__x2B_"></a></li>
+          </ul>
+
         </section>
+
       </div>
   <% end %>
 
   <div class="container">
+
     <p id="notice"><%= notice %></p>
 
     <% if content_for? :header %>

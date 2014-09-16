@@ -7,6 +7,11 @@
   padding-bottom: 30px;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .body {
   position: relative;
 }
@@ -36,34 +41,6 @@
       li { padding-right: 30px; }
     }
 
-    .social-icons {
-      li {
-        padding-right: 2px;
-
-        a {
-          display: block;
-          width: 24px;
-          height: 24px;
-          margin-top: 5px;
-
-          &::before {
-            padding: 3px;
-            font-size: 18px;
-            background-color: #333;
-            color: $navbar-default-bg;
-            border-radius: 3px;
-            opacity: .1;
-          }
-
-          &:hover {
-            text-decoration: none;
-            color: black;
-
-            &::before { opacity: 1 }
-          }
-        }
-      }
-    }
   }
 
   .main-menu {
@@ -85,6 +62,42 @@
 
       .zelenyuk {
         color: $green3;
+      }
+    }
+  }
+}
+
+.social-icons {
+
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 360px;
+
+  li {
+    padding-right: 3px;
+    display: table-cell;
+
+    a {
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin-top: 5px;
+
+      &::before {
+        padding: 3px;
+        font-size: 16px;
+        border: 1px $navbar-default-bg solid;
+        color: $navbar-default-bg;
+        border-radius: 3px;
+        opacity: .6;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: black;
+
+        &::before { opacity: 1 }
       }
     }
   }
