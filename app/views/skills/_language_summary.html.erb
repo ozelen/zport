@@ -1,22 +1,21 @@
-<table class="table table-hover">
-  <thead>
-  <th>Language</th>
-  <th>Last time used</th>
-  <th class="rate">Level</th>
-  </thead>
-  <tbody>
+<header class="row table-header hidden-sm hidden-xs">
+  <div class="col-xs-5">Language</div>
+  <div class="col-xs-4">Level</div>
+  <div class="col-xs-3">Last time used</div>
+</header>
 
-      <% languages.each do |skill_summary| %>
-          <% if skill_summary.category_name == 'Languages' %>
-              <tr>
-                <td><span class="icon icon-<%= skill_summary.skill_slug %>"></span><%= skill_summary.skill_name %></td>
-                <td><%= time_ago(skill_summary.latest_experience) %></td>
-                <td>
-                  <%= skill_summary.lang_summary %>
-                </td>
-              </tr>
-          <% end %>
-      <% end %>
+<% languages.each do |skill_summary| %>
+  <% if skill_summary.category_name == 'Languages' %>
+        <div class="row">
+          <div class="col-sm-5"><%= skill_summary.skill_name %></div>
+          <div class="col-sm-4">
+            <%= skill_summary.lang_summary %>
+            <span class="hidden-sm hidden-md-hidden-lg">, <%= time_ago(skill_summary.latest_experience) %></span>
+          </div>
+          <div class="col-sm-3 hidden-xs">
+            <%= time_ago(skill_summary.latest_experience) %>
+          </div>
+        </div>
+  <% end %>
+<% end %>
 
-  </tbody>
-</table>

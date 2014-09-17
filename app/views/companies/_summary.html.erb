@@ -1,0 +1,10 @@
+<% companies.each do |job| %>
+    <div class="row">
+      <div class="col-sm-9">
+        <%= job.title %> in <%= job.company %>
+      </div>
+      <div class="col-sm-3">
+        <%= job.since.year %> &mdash; <%= job.till.try(:year) || 'now' %>
+      </div>
+    </div>
+<% end %>

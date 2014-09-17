@@ -24,4 +24,8 @@ class Skill < ActiveRecord::Base
     LANG_LEVELS[max_rate]
   end
 
+  def relative_rate
+    max_rate * 100 / Experience.maximum(:rate)
+  end
+
 end

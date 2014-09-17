@@ -39,57 +39,49 @@
 
 <% @page_id = 'cv' %>
 
-<section id="summary-of-qualifications">
-  <h2>Summary of Qualifications</h2>
+<section class="cv-section" id="summary-of-qualifications">
+  <header class="row">
+    <h2 class="col-xs-12"> Summary of Qualifications <span class="icon icon-skill-summary"></span>
+    </h2>
+  </header>
+
   <%= markdown @site_owner.summary %>
 </section>
 
-<section id="skills">
-  <h2>Skills in details</h2>
+<section class="cv-section" id="skills">
+  <header class="row">
+    <h2 class="col-xs-12"> Skills in details <span class="icon icon-skills"></span> </h2>
+  </header>
   <%= render 'skills/skill_summary', categories: @skill_cats, skills: @skill_sum %>
 </section>
 
-<section id="employment-history" class="key_value">
-  <h2>Employment history</h2>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Duration</th>
-      <th>Job description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @site_owner.employers.each do |job| %>
-        <tr>
-          <th><%= job.since.year %> &mdash; <%= job.till.try(:year) || 'now' %></th>
-          <td><%= job.title %> in <%= job.company %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+<section class="cv-section" id="employment-history">
+  <header class="row">
+    <h2 class="col-xs-12"> Employment history <span class="icon icon-skills"></span> </h2>
+  </header>
+
+  <header class="row table-header hidden-xs">
+    <div class="col-sm-9">Company</div>
+    <div class="col-sm-3">Duration</div>
+  </header>
+
+  <%= render 'companies/summary', companies: @site_owner.employers %>
+
 </section>
 
-<section id="education" class="key_value">
-  <h2>Education</h2>
+<section class="cv-section" id="education">
+    <header class="row">
+        <h2 class="col-xs-12"> Education <span class="icon icon-education"></span> </h2>
+    </header>
 
   <h3>Degree</h3>
 
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Duration</th>
-      <th>School</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @site_owner.schools.each do |job| %>
-        <tr>
-          <th><%= job.since.year %> &mdash; <%= job.till.try(:year) || 'now' %></th>
-          <td><%= job.title %> in <%= job.company %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+    <header class="row table-header hidden-xs">
+        <div class="col-sm-9">School</div>
+        <div class="col-sm-3">Duration</div>
+    </header>
+
+  <%= render 'companies/summary', companies: @site_owner.schools %>
 
   <h3>Languages</h3>
 
@@ -97,96 +89,25 @@
 
   <h3>Certifications</h3>
 
-  <table class="table">
-    <tr>
-      <th></th>
-      <th>Certification</th>
-      <th>Value</th>
-      <th>Year</th>
-    </tr>
+    <header class="row table-header">
+        <div class="col-xs-9">Certificate</div>
+        <div class="col-xs-3">Year</div>
+    </header>
+
     <% Certification.all.each do |cert| %>
-        <tr>
-          <td></td>
-          <td><%= cert.name %></td>
-          <td><%= cert.value %></td>
-          <td><%= cert.year %></td>
-        </tr>
+      <div class="row">
+        <div class="col-xs-9"><%= cert.name %></div>
+        <div class="col-xs-3"><%= cert.year %></div>
+      </div>
     <% end %>
-  </table>
 
 </section>
 
-<section id="projects-experience" class="key_value">
-  <h2>Project Experience</h2>
+<section class="cv-section" id="projects-experience">
+    <header class="row">
+        <h2 class="col-xs-12"> Project Experience <span class="icon icon-experience"></span> </h2>
+    </header>
 
-  <% @site_owner.assignments.each do |assignment| %>
-      <% project = assignment.project %>
-
-      <%= content_tag_for :section, assignment do %>
-          <h3><%= project.name %></h3>
-
-          <table class="table">
-            <tr>
-              <th>Project Description:</th>
-              <td class="col-lg-9"><%= project.description %></td>
-            </tr>
-            <tr>
-              <th>Customer:</th>
-              <td><%= project.customer %></td>
-            </tr>
-            <tr>
-              <th>Provider:</th>
-              <td><%= project.provider %></td>
-            </tr>
-            <tr>
-              <th>Project Role:</th>
-              <td><%= assignment.role %></td>
-            </tr>
-            <tr>
-              <th>Responsibilities:</th>
-              <td><%= assignment.description %></td>
-            </tr>
-            <tr>
-              <th>Project Team Size:</th>
-              <td><%= project.team %></td>
-            </tr>
-            <tr>
-              <th>Tools & Technologies:</th>
-              <td>
-
-                <% assignment.skill_categories.uniq.in_groups_of(2) do |group| %>
-
-                    <div class="row">
-
-                      <% group.each do |skill_category| %>
-                          <section class="skill_category col-lg-5">
-                            <header><%= skill_category %></header>
-                            <ul>
-                              <% assignment.skills.each do |skill| %>
-                                  <% if skill.skill_category == skill_category %>
-                                      <li class="icon">
-                                        <span class="icon icon-<%= skill.slug %>"></span>
-                                        <%= skill %>
-                                      </li>
-                                  <% end %>
-                              <% end %>
-                            </ul>
-                          </section>
-                      <% end %>
-
-                    </div>
-
-                <% end %>
-
-              </td>
-            </tr>
-            <tr>
-              <th>Involvement Duration:</th>
-              <td><%= days_in_words( (assignment.till || Date::today()) - assignment.since ) %></td>
-            </tr>
-          </table>
-      <% end %>
-
-  <% end %>
+  <%= render 'assignments/summary', assignments: @site_owner.assignments %>
 
 </section>

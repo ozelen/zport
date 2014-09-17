@@ -46,27 +46,79 @@ body.cv {
 
   .progress {
     margin: 0;
-    width: 200px;
   }
 
-  section {
+  section.cv-section {
     margin-bottom: 80px;
 
     section {
       margin-bottom: 20px;
     }
 
-    h2 {
-      background: #ccc;
-      color: #fff;
-      padding: 3px;
-      font-size: 1em;
-      font-weight: bold;
-      margin-top: 0;
+    &>header:first-child {
+      background: $table-bg-accent;
+      color: $gray-light;
+      margin-bottom: 10px;
+
+      h2 {
+        font-size: 1.5em;
+        margin-top: 10px;
+      }
+
     }
 
-    &.skill_category {
-      margin-right: 20px;
+    & > .row, .assignment > .row {
+      padding: 5px 0;
+      border-bottom: 1px $btn-default-border solid;
+    }
+
+    &>header.table-header {
+      font-weight: bold;
+    }
+
+    h3 {
+      color: $gray-light;
+      font-size: 1.3em;
+    }
+
+    .assignment {
+
+      & > header h3 {
+        font-size: 1.4em;
+        color: $brand-primary;
+      }
+
+      & > .row {
+        & > div:first-child {
+          font-weight: bold;
+          color: $gray-light;
+        }
+      }
+
+      .skill_category header {
+        background: $table-bg-accent;
+        color: $gray-light;
+        font-weight: normal;
+        padding: 2px 30px;
+      }
     }
   }
+}
+
+section#skills {
+  &>.skill_category>.row {
+    padding: 5px 0;
+    border-bottom: 1px $btn-default-border solid;
+  }
+
+  .icon {
+    margin-top: 2px;
+  }
+
+  .skill-name { font-weight: bold; }
+
+  @media (min-width: 1200px) {
+    .skill-name { font-weight: normal; }
+  }
+
 }

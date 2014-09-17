@@ -1,0 +1,70 @@
+<% assignments.each do |assignment| %>
+    <% project = assignment.project %>
+
+    <%= content_tag_for :section, assignment do %>
+        <header>
+          <h3><%= project.name %></h3>
+        </header>
+
+        <div class="row">
+          <div class="col-xs-3">Customer:</div>
+          <div class="col-xs-9"><%= project.customer %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Provider:</div>
+          <div class="col-xs-9"><%= project.provider %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Role:</div>
+          <div class="col-xs-9"><%= assignment.role %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Team:</div>
+          <div class="col-xs-9"><%= project.team %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Involvement Duration:</div>
+          <div class="col-xs-9"><%= duration_in_words(assignment.since, assignment.till) %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Project Description:</div>
+          <div class="col-sm-9"><%= project.description %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Responsibilities:</div>
+          <div class="col-sm-9"><%= assignment.description %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">Tools & Technologies:</div>
+          <div class="col-sm-9">
+
+            <% assignment.skill_categories.uniq.in_groups_of(2) do |group| %>
+
+                <div class="row">
+
+                  <% group.each do |skill_category| %>
+                      <section class="skill_category col-sm-6">
+                        <header><%= skill_category %></header>
+                        <ul>
+                          <% assignment.skills.each do |skill| %>
+                              <% if skill.skill_category == skill_category %>
+                                  <li class="icon">
+                                    <span class="icon icon-<%= skill.slug %>"></span>
+                                    <%= skill %>
+                                  </li>
+                              <% end %>
+                          <% end %>
+                        </ul>
+                      </section>
+                  <% end %>
+
+                </div>
+
+            <% end %>
+
+          </div>
+        </div>
+
+    <% end %>
+
+<% end %>

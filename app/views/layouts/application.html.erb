@@ -12,7 +12,7 @@
 <div class="cover">
 
 <header class="global-header navbar navbar-default" role="navigation">
-  <div class="contact-header">
+  <div class="contact-header hidden-xs">
     <div class="container">
 
       <ul class="info pull-left">
@@ -82,10 +82,10 @@
 
     <% if content_for? :sidebar %>
         <div class="row">
-          <div class="col-lg-8 content">
+          <div class="col-md-9 content">
             <%= yield %>
           </div>
-          <div class="col-lg-4">
+          <div class="col-md-3 hidden-sm hidden-xs hidden-print" role="complementary">
             <%= yield(:sidebar) %>
           </div>
         </div>

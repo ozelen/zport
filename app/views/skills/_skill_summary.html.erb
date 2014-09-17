@@ -1,36 +1,65 @@
-<table class="table table-hover">
-  <thead>
-  <th>Skill</th>
-  <th>Experience time</th>
-  <th>Last time faced</th>
-  <th class="rate">Relative Rate</th>
-  </thead>
-  <tbody>
+<header class="row table-header hidden-md hidden-sm hidden-xs">
+  <div class="col-lg-3">Skill           </div>
+  <div class="col-lg-3">Relative Rate   </div>
+  <div class="col-lg-3">Experience time </div>
+  <div class="col-lg-3">Last time faced </div>
+</header>
 
   <% categories.each do |c| %>
-      <tr>
-        <th colspan="4"><%= c %>:</th>
-      </tr>
-      <% skills.each do |skill_summary| %>
-          <% if skill_summary.category_name == c %>
-              <%
-                 relative_rate = skill_summary.max_rate * 100 / Experience.maximum(:rate)
-              %>
-              <tr>
-                <td><span class="icon icon-<%= skill_summary.skill_slug %>"></span><%= skill_summary.skill_name %></td>
-                <td><%= days_in_words(skill_summary.sum_days) %></td>
-                <td><%= time_ago(skill_summary.latest_experience) %></td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="<%= relative_rate %>" aria-valuemin="<%= relative_rate %>" aria-valuemax="100" style="width: <%= relative_rate %>%;">
-                      <%= relative_rate %> %
+
+    <section id="<%= c %>" class="skill_category">
+        <header>
+          <h4><%= c %></h4>
+        </header>
+
+        <% skills.each do |skill_summary| %>
+        <% if skill_summary.category_name == c %>
+            <%
+               relative_rate = skill_summary.relative_rate
+               level = skill_level( relative_rate )
+            %>
+
+            <div class="row">
+
+              <div class="col-lg-6">
+                <div class="row">
+
+                  <div class="col-xs-6 skill-name">
+                    <span class="icon icon-<%= skill_summary.skill_slug %> pull-right"></span>
+                    <%= skill_summary.skill_name %>
+                  </div>
+
+                  <div class="col-xs-6">
+                    <div class="progress" title="<%= level %>">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="<%= relative_rate %>" aria-valuemin="<%= relative_rate %>" aria-valuemax="100" style="width: <%= relative_rate %>%;">
+                        <%# level %>
+                      </div>
                     </div>
                   </div>
-                </td>
-              </tr>
-          <% end %>
-      <% end %>
-  <% end %>
 
-  </tbody>
-</table>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="row">
+
+                  <div class="col-xs-6">
+                    <%= days_in_words(skill_summary.sum_days) %>
+                    <span class="hidden-lg">of experience</span>
+                  </div>
+                  <div class="col-xs-6">
+                    <% unless time_ago(skill_summary.latest_experience) == 'now working' %>
+                        <span class="hidden-lg">last time faced: </span>
+                    <% end %>
+                    <%= time_ago(skill_summary.latest_experience) %>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+        <% end %>
+      <% end %>
+    </section>
+<% end %>

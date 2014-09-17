@@ -26,7 +26,11 @@ module ApplicationHelper
   end
 
   def time_ago(date)
-    (Date::today - date).try(:days) > 0 ? time_ago_in_words( date ) + ' ago' : 'now'
+    (Date::today - date).try(:days) > 0 ? time_ago_in_words( date ) + ' ago' : 'currently using'
+  end
+
+  def duration_in_words (since, till)
+    days_in_words( (till || Date::today()) - since )
   end
 
   def title(text = nil)
@@ -39,6 +43,16 @@ module ApplicationHelper
     def block_code(code, language)
       require 'pygmentize'
       Pygmentize.process(code, language)
+    end
+  end
+
+  def skill_level(val)
+    case val
+      when 0..10    then 'noob'
+      when 11..30   then 'beginner'
+      when 31..60   then 'average'
+      when 61..90   then 'strong'
+      when 91..100  then 'expert'
     end
   end
 
