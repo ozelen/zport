@@ -5,10 +5,10 @@
 {
   font-family: "pictonic";
   src: asset_url('pictonic.eot');
-  src: url( 'pictonic.eot?#iefix' ) format('embedded-opentype'),
-  url( asset-path('pictonic.ttf'             ) ) format('truetype'),
-  url( font-path('pictonic.woff'            ) ) format('woff'),
-  url( font-path('/assets/font/pictonic.svg'        ) ) format('svg');
+  src: url( 'http://assets.zelenyuk.com/fonts/pictonic.eot?#iefix' ) format('embedded-opentype'),
+  url( asset-path('http://assets.zelenyuk.com/fonts/pictonic.ttf'             ) ) format('truetype'),
+  url( font-path('http://assets.zelenyuk.com/fonts/pictonic.woff'            ) ) format('woff'),
+  url( font-path('http://assets.zelenyuk.com/fonts/assets/font/pictonic.svg'        ) ) format('svg');
   font-weight: normal;
   font-style: normal;
 }
