@@ -38,29 +38,13 @@
           <div class="col-sm-3">Tools & Technologies:</div>
           <div class="col-sm-9">
 
-            <% assignment.skill_categories.uniq.in_groups_of(2) do |group| %>
+            <div class="hidden-print hidden-xs">
+              <%= render 'assignments/skills_in_groups', assignment: assignment %>
+            </div>
 
-                <div class="row">
-
-                  <% group.each do |skill_category| %>
-                      <section class="skill_category col-sm-6">
-                        <header><%= skill_category %></header>
-                        <ul>
-                          <% assignment.skills.each do |skill| %>
-                              <% if skill.skill_category == skill_category %>
-                                  <li class="icon">
-                                    <span class="icon icon-<%= skill.slug %>"></span>
-                                    <%= skill %>
-                                  </li>
-                              <% end %>
-                          <% end %>
-                        </ul>
-                      </section>
-                  <% end %>
-
-                </div>
-
-            <% end %>
+            <div class="hidden-sm hidden-md hidden-lg">
+              <%= render 'assignments/skills_in_text', assignment: assignment %>
+            </div>
 
           </div>
         </div>
