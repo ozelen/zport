@@ -5,6 +5,6 @@ class Assignment < ActiveRecord::Base
   has_many :skills, through: :experiences
   has_many :skill_categories, through: :skills
 
-  #default_scope order('till desc')
+  scope :latest, -> { order('till desc') }
 
 end

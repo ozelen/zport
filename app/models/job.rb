@@ -5,6 +5,8 @@ class Job < ActiveRecord::Base
   TYPES = %w(employer school client)
 
   scope :by_type, -> (type_name) { where(type_id: TYPES.index(type_name)) }
+  scope :latest, -> { order('till desc') }
+  default_scope { order('till desc, since desc')}
 
   def type
     TYPES[type_id] if type_id
