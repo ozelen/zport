@@ -44,7 +44,7 @@
                 <div class="row">
 
                   <div class="col-xs-6">
-                    <%= days_in_words(skill_summary.sum_days) %>
+                    <%= days_in_words(skill_summary.sum_days) if skill_summary.sum_days %>
                     <span class="hidden-lg">of experience</span>
                   </div>
                   <div class="col-xs-6">

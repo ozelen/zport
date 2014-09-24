@@ -21,11 +21,11 @@ class Skill < ActiveRecord::Base
   end
 
   def lang_summary
-    LANG_LEVELS[max_rate]
+    max_rate ? LANG_LEVELS[max_rate] : nil
   end
 
   def relative_rate
-    max_rate * 100 / Experience.maximum(:rate)
+    max_rate ? max_rate * 100 / Experience.maximum(:rate) : nil
   end
 
 end
