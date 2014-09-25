@@ -1,8 +1,8 @@
 ready = ->
   $('.datepicker').datepicker({format: 'yyyy-mm-dd'})
 
-  $('[data-spy=scroll]').each ->
-    $(this).scrollspy({ target: $(this).attr('data-target') })
+  $('[data-spy=scroll]')['each'] ->
+    $(this)['scrollspy']({ target: $(this).attr('data-target') })
 
   $('[data-spy=affix]').each ->
     $(this).affix
