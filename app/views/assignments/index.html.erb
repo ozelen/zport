@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-  <% @assignments.each do |assignment| %>
+  <% @assignments.latest.each do |assignment| %>
       <tr>
         <td><%= link_to assignment.project, assignment %></td>
         <td><%= assignment.role %></td>

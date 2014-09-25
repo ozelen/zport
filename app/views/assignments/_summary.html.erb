@@ -1,4 +1,4 @@
-<% assignments.each do |assignment| %>
+<% assignments.latest.each do |assignment| %>
     <% project = assignment.project %>
 
     <%= content_tag_for :section, assignment do %>

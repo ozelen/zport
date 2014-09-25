@@ -28,7 +28,7 @@
             Project Experience
           </a>
           <ul class="nav">
-            <% @site_owner.assignments.each do |assignment| %>
+            <% @site_owner.assignments.latest.each do |assignment| %>
                 <li><a href="#assignment_<%= assignment.id %>"><%= assignment.project.name %></a></li>
             <% end %>
           </ul>
