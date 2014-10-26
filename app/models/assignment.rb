@@ -7,4 +7,9 @@ class Assignment < ActiveRecord::Base
 
   scope :latest, -> { order('till desc, since desc') }
 
+  def skills_in_text(cat=nil)
+    arr = skills.map { |s| s if !cat || s.skill_category == cat }.reject!(&:blank?)
+    arr.join(', ') if arr
+  end
+
 end

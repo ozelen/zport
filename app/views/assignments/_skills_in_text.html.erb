@@ -2,6 +2,6 @@
     <section class="skill_category col-sm-6">
       <header><%= cat %>:</header>
 
-      <%= assignment.skills.map { |s| s if s.skill_category == cat }.reject!(&:blank?).join(', ') %>
+      <%= assignment.skills_in_text(cat) %>
     </section>
 <% end %>

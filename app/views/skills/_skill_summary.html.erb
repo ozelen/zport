@@ -48,8 +48,8 @@
                     <span class="hidden-lg">of experience</span>
                   </div>
                   <div class="col-xs-6">
-                    <% unless time_ago(skill_summary.latest_experience) == 'now working' %>
-                        <span class="hidden-lg">last time faced: </span>
+                    <% unless time_ago(skill_summary.latest_experience) == 'currently using' %>
+                        <span class="hidden-lg">last experience: </span>
                     <% end %>
                     <%= time_ago(skill_summary.latest_experience) %>
                   </div>
