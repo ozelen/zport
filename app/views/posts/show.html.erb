@@ -1,0 +1,17 @@
+<% title @post.title %>
+<% content_for :header, @post.title %>
+
+<div class="post_content">
+  <%= markdown @post.content %>
+</div>
+
+<div class="tags">
+  <h3>Tags:</h3>
+  <%= @post.tag_list %>
+</div>
+
+<% if person_signed_in? and current_person.admin? %>
+    <hr/>
+    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-default' %>
+    <%= link_to 'Back', posts_path, class: 'btn btn-default' %>
+<%end %>

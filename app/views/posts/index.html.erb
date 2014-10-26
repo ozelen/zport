@@ -1,0 +1,35 @@
+<h1>Blog</h1>
+
+<% @posts.each do |post| %>
+
+    <%= content_tag_for 'div', post do %>
+        <div>
+          <h3><%= link_to post.title, post %></h3>
+
+          <div class="content">
+            <%= markdown post.content %>
+          </div>
+
+          <div class="tags">Tags: <%= post.tag_list %></div>
+        </div>
+
+        <div class="controls">
+          <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-default' %>
+          <%= link_to 'Destroy', post, class: 'btn btn-default',
+                      method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+    <h3>Tags:</h3>
+    <div class="tag-cloud">
+      <% tag_cloud(@tags, %w(s1 s2 s3 s4 s5 s6 s7 s8 s9)) do |tag, css_class| %>
+          <%= link_to tag.name, posts_by_tag_path(tag.name), class: css_class %>
+      <% end %>
+    </div>
+<% end %>
+
+<hr/>
+
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>

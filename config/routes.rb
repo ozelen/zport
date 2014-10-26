@@ -1,9 +1,13 @@
 Zport::Application.routes.draw do
 
+  resources :posts
+
   resources :certifications
 
-  get 'cv'          => 'pages#cv',        as: :cv
-  get 'contacts'    => 'pages#contacts',  as: :contacts
+  get 'blog'            => 'posts#index',     as: :blog
+  get 'blog/tag/:tag'   => 'posts#index',     as: :posts_by_tag
+  get 'cv'              => 'pages#cv',        as: :cv
+  get 'contacts'        => 'pages#contacts',  as: :contacts
 
   resources :experiences
   get 'experiences/search'
