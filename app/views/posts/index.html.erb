@@ -30,21 +30,23 @@
                           method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
         <% end %>
-
+        <hr/>
     <% end %>
 <% end %>
+
+<footer class="clearfix">
+  <%= link_to_previous_page @posts, 'Newer posts', class: 'pull-left' %>
+  <%= link_to_next_page @posts, 'Older posts', class: 'pull-right' %>
+</footer>
 
 <% content_for :sidebar do %>
     <h3>Tags:</h3>
     <div class="tag-cloud">
       <% tag_cloud(@tags, %w(s1 s2 s3 s4 s5 s6 s7 s8 s9)) do |tag, css_class| %>
-          <%= link_to tag.name, posts_by_tag_path(tag.name), class: css_class %>
+          <%= link_to tag.name, blog_path(tag.name), class: css_class %>
       <% end %>
     </div>
 <% end %>
-
-<hr/>
-
 
 <% if person_signed_in? %>
     <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>

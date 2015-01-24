@@ -62,6 +62,7 @@ gem 'pygmentize'
 
 gem 'angularjs-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'kaminari'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

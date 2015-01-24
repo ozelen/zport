@@ -4,10 +4,9 @@ Zport::Application.routes.draw do
 
   resources :certifications
 
-  get 'blog'            => 'posts#index',     as: :blog
-  get 'blog/tag/:tag'   => 'posts#index',     as: :posts_by_tag
-  get 'cv'              => 'pages#cv',        as: :cv
-  get 'contacts'        => 'pages#contacts',  as: :contacts
+  get 'blog(/tag/:tag)(/page/:page)'  => 'posts#index',     as: :blog
+  get 'cv'                            => 'pages#cv',        as: :cv
+  get 'contacts'                      => 'pages#contacts',  as: :contacts
 
   resources :experiences
   get 'experiences/search'

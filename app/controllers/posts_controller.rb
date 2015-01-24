@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = params[:tag] ? Post.tagged_with(params[:tag]) : Post.all
+    @posts = @posts.page(params[:page])
   end
 
   def tag_cloud
