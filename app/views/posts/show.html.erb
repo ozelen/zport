@@ -5,10 +5,12 @@
   <%= markdown @post.content %>
 </div>
 
-<div class="tags">
-  <h3>Tags:</h3>
-  <%= @post.tag_list %>
-</div>
+<% if @post.tags.present? %>
+    <div class="tags">
+      Tags:
+      <%= tag_links @post %>
+    </div>
+<% end %>
 
 <% if person_signed_in? and current_person.admin? %>
     <hr/>

@@ -4,13 +4,23 @@
 
     <%= content_tag_for 'div', post do %>
         <div>
-          <h3><%= link_to post.title, post %></h3>
+          <h3>
+            <%= link_to post.title, post %>
+          </h3>
+
+          <small class="text-muted"><%= l post.created_at %></small>
 
           <div class="content">
             <%= markdown post.content %>
           </div>
 
-          <div class="tags">Tags: <%= post.tag_list %></div>
+          <% if post.tags.present? %>
+              <div class="tags">
+                Tags:
+                <%= tag_links post %>
+              </div>
+          <% end %>
+
         </div>
 
         <% if person_signed_in? %>
