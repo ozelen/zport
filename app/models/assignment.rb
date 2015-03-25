@@ -11,5 +11,4 @@ class Assignment < ActiveRecord::Base
     arr = skills.map { |s| s if !cat || s.skill_category == cat }.reject!(&:blank?)
     arr.join(', ') if arr
   end
-
 end
