@@ -133,6 +133,12 @@ i, cite, em, var, address, dfn {
 
 #page-header {
   h1 { font-size: 3.5em }
+  @media print {
+    h1 {
+      font-size: 1.5em;
+      color: blue;
+    }
+  }
 }
 
 @keyframes fadein {
