@@ -29,6 +29,10 @@ module ApplicationHelper
     (Date::today - date).try(:days) > 0 ? time_ago_in_words( date ) + ' ago' : 'currently using'
   end
 
+  def format_date(date)
+    date.strftime('%m/%Y') if date.is_a? Date
+  end
+
   def duration_in_words (since, till)
     days_in_words( (till || Date::today()) - since )
   end

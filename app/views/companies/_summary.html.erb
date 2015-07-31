@@ -4,7 +4,7 @@
         <%= job.title %> at <%= job.company %>
       </div>
       <div class="col-sm-3">
-        <%= job.till.strftime '%m/%Y' %> &mdash; <%= job.till.strftime '%m/%Y' || 'now' %>
+        <%= format_date job.since %> &mdash; <%= (format_date job.till) || 'now' %>
       </div>
     </div>
 <% end %>
