@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0; user-scalable=no">
+  <meta name="google-site-verification" content="YwqdBhAra322pIFCGYmG14otA-Dj1lRJRJYl7fQHMeM" />
 </head>
 <body class="<%= @page_id %>" data-spy="scroll" data-target=".sidebar-menu">
 
@@ -98,7 +99,7 @@
 
 <footer>
   <div class="container">
-    &copy; Oleksiy Zelenyuk 2014-2015
+    &copy; Oleksiy Zelenyuk 2014-<%= Time.now.year %>
   </div>
 </footer>
 
